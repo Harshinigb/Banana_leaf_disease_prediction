@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banana Leaf Disease Prediction</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-success text-white">
+                    <h3>Banana Leaf Disease Prediction</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Leaf Length</label>
+                            <input type="number" name="length" step="any" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Leaf Width</label>
+                            <input type="number" name="width" step="any" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Color Intensity</label>
+                            <select name="color" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="Light">Light</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Dark">Dark</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Spots Present</label>
+                            <select name="spots" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Moisture Level</label>
+                            <input type="number" name="moisture" step="any" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Texture</label>
+                            <select name="texture" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="Smooth">Smooth</option>
+                                <option value="Rough">Rough</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Humidity</label>
+                            <input type="number" name="humidity" step="any" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Temperature</label>
+                            <input type="number" name="temp" step="any" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Soil Type</label>
+                            <select name="soil" class="form-select" required>
+                                <option value="">Select</option>
+                                <option value="Clay">Clay</option>
+                                <option value="Sandy">Sandy</option>
+                                <option value="Loamy">Loamy</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Predict</button>
+                        </div>
+
+                    </form>
+
+                    {% if result %}
+                        <div class="alert alert-info mt-4 text-center">
+                            <strong>Prediction:</strong> {{ result }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
